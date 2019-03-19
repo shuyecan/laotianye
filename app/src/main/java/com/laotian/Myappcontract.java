@@ -8,14 +8,19 @@ import interfaces.heweather.com.interfacesmodule.view.HeConfig;
 
 public class Myappcontract extends Application {
     private static Myappcontract myApplication;
+
     @Override
     public void onCreate() {
         super.onCreate();
         myApplication = this;
-        HeConfig.init("HE1903162014581412", "fc0e5a5ebf5f4e44b55b9e7db94a4226");
+        HeConfig.init("HE1903181434251110", "6eea7e4736c54de1a3166427550db17c");
+        HeConfig.switchToFreeServerNode();
+
+
     }
 
     public static Myappcontract getInstance(){
         return myApplication;
     }
+
 }

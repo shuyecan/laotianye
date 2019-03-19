@@ -1,7 +1,9 @@
 package com.laotian;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -35,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     private void initView() {
-        mpresenter.getWeather(MainActivity.this,"",Lang.CHINESE_SIMPLIFIED,Unit.METRIC);
         Permission.getmInstance(MainActivity.this,permissions).check_permission(MainActivity.this,permissions);
     }
 
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 for (int i = 0; i < grantResults.length; i++) {
                     if (grantResults[i]==PackageManager.PERMISSION_GRANTED){
-                        Toast.makeText(this, "权限获取成功", Toast.LENGTH_SHORT).show();
+                        mpresenter.getWeather(MainActivity.this,"auto_ip",Lang.CHINESE_SIMPLIFIED,Unit.METRIC);
                     }else if(grantResults[i]==PackageManager.PERMISSION_DENIED){
                         boolean b = shouldShowRequestPermissionRationale(permissions[i]);
                         if(!b){
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void showWeather(String data) {
         tvDizhi.setText(data);
     }
+
 
     @Override
     public void setPresenter(MainContract.Presenter presenter) {

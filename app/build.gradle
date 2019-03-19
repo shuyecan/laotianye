@@ -2,6 +2,16 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
+
+    signingConfigs {
+        debug {
+            keyAlias 'laotianye'
+            keyPassword 'shuye520'
+            storeFile file('C:/works/release_apk/laotianye.keystore')
+            storePassword 'shuye520'
+        }
+    }
+
     defaultConfig {
         applicationId "com.laotian"
         minSdkVersion 22

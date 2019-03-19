@@ -22,6 +22,5 @@ public interface MainContract {
 
     interface Presenter extends BasePresenter {
         void getWeather(Context context,String location ,Lang language,Unit unit);
-
     }
 }
