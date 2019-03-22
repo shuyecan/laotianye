@@ -15,8 +15,6 @@ public class Myappcontract extends Application {
         myApplication = this;
         HeConfig.init("HE1903181434251110", "6eea7e4736c54de1a3166427550db17c");
         HeConfig.switchToFreeServerNode();
-
-
     }
 
     public static Myappcontract getInstance(){
