@@ -1,6 +1,9 @@
 package com.laotian.model;
 
 import android.content.Context;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 
 import com.google.gson.Gson;
 import com.laotian.base.ICallback;
@@ -79,5 +82,4 @@ public class MainModel implements MainContract.Model {
             callback.onSucceed("刚刚");
         }
     }
-
 }

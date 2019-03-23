@@ -1,7 +1,5 @@
 package com.laotian.activity;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.laotian.R;
@@ -44,6 +41,12 @@ public class MainFragment extends Fragment implements MainContract.View {
     ImageView mianImgCity;
     @BindView(R.id.mian_img_more)
     ImageView mianImgMore;
+    @BindView(R.id.main_txt_temperature)
+    TextView mainTxtTemperature;
+    @BindView(R.id.main_img_address)
+    ImageView mainImgAddress;
+    @BindView(R.id.main_txt_start)
+    TextView mainTxtStart;
 
     public static MainFragment newInstance(String location) {
         MainFragment fragment = new MainFragment();
@@ -78,6 +81,8 @@ public class MainFragment extends Fragment implements MainContract.View {
         if (bundle != null) {
             String location = bundle.getString("location");
             mpresenter.getWeather(getActivity(), location, Lang.CHINESE_SIMPLIFIED, Unit.METRIC);
+
+
         }
     }
 
@@ -95,6 +100,8 @@ public class MainFragment extends Fragment implements MainContract.View {
         Update update = data.get(0).getUpdate();
         mainTxtAddress.setText(base.getLocation());
         mpresenter.getTime(update.getLoc());
+        mainTxtTemperature.setText(now.getTmp() + "°");
+        mainTxtStart.setText(now.getCond_txt()+"  "+now.getWind_dir()+"/"+now.getWind_sc()+"级");
     }
 
     @Override
@@ -119,7 +126,7 @@ public class MainFragment extends Fragment implements MainContract.View {
             case R.id.mian_img_city:
                 break;
             case R.id.mian_img_more:
-                PopupMenu pop=new PopupMenu (getActivity(),mianImgMore);
+                PopupMenu pop = new PopupMenu(getActivity(), mianImgMore);
                 MenuInflater inflater = pop.getMenuInflater();
                 inflater.inflate(R.menu.main_menu, pop.getMenu());
                 pop.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -61,17 +62,40 @@
             android:src="@mipmap/more" />
     </RelativeLayout>
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_weight="1"
+        android:layout_width="fill_parent"
+        android:fillViewport="true"
+        android:layout_height="0dp">
 
-        <LinearLayout
-            android:orientation="vertical"
+        <RelativeLayout
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <include layout="@layout/fragmen_top"></include>
+            android:layout_height="wrap_content">
 
-            <include layout="@layout/fragment_bottom"></include>
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/main_txt_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/main_txt_start"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="54dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/whire"
+                android:textSize="@dimen/sp50" />
+
+            <TextView
+                android:id="@+id/main_txt_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="54dp"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginBottom="35dp"
+                android:textColor="@color/whire"
+                android:textSize="@dimen/sp18" />
+
+        </RelativeLayout>
     </ScrollView>
 </LinearLayout>
